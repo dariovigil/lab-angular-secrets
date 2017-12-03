@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmitSignup()" #signupForm="ngForm" name=loginForm>
+  <fieldset>
+    <legend>Login</legend>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" [(ngModel)]="user.username" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" [(ngModel)]="user.password" required>
+    </div>
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="name" [(ngModel)]="newUser.name" required>
+    </div>
+    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+  </fieldset>
+</form>

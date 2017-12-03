@@ -1,4 +1,13 @@
-<section id="main">
-  <h1> Secrets </h1>
+<section class="main">
+  <h1>PP | Secrets</h1>
+  <div *ngIf="!userInfo">
+    <!-- <a routerLink="/signup"> Signup </a> -->
+    <a routerLink="/login"> Login </a>
+  </div>
+
+    <div *ngIf="userInfo">
+      <a routerLink="/logout"> Logout </a>
+    </div>
 </section>
+
 <router-outlet></router-outlet>
