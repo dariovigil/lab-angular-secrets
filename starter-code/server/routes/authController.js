@@ -5,7 +5,7 @@ const passport       = require("passport");
 const User           = require("../models/user");
 
 const bcrypt         = require("bcrypt");
-const bcryptSalt     = 19;
+const bcryptSalt     = 10;
 
 authController.post("/signup", (req, res, next) => {
   let username = req.body.username;
@@ -40,6 +40,8 @@ authController.post("/signup", (req, res, next) => {
       else {
         req.login(newUser, (err) => {
           if (err) { return res.status(500).json({ message: "Something went wrong" }); }
+          console.log('Signup success back!', req.user);
+
           res.status(200).json(req.user);
         });
       }
