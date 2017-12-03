@@ -10,10 +10,10 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class SessionService {
-  username:string = '';
-  secret:string = '';
+  username: string = '';
+  secret: string = '';
   baseUrl = environment.apiUrl;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   signup(user: User) {
     return this.http.post(`${this.baseUrl}/api/signup`, user)
@@ -22,15 +22,22 @@ export class SessionService {
 
   login(info: any) {
     return this.http.post(
-      this.baseUrl + '/api/login',
+      `${this.baseUrl}/api/login`,
       info
     )
   }
 
+  isLogged() {
+    return this.http.get(`${this.baseUrl}/api/loggedin`);
+  }
+
+  logout() {
+    return this.http.delete(`${this.baseUrl}/api/private`);
+  }
 
   updateInfo(data: any) {
-  this.username = data.username;
-  this.secret = data.secret;
-}
+    this.username = data.username;
+    this.secret = data.secret;
+  }
 
 }
